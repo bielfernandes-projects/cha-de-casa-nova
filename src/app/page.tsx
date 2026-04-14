@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { supabase } from "@/utils/supabaseClient"
-import { Gift, ExternalLink, MessageCircleHeart, CheckCircle2, User, Copy, Check, QrCode } from "lucide-react"
+import { Gift, ExternalLink, MessageCircleHeart, CheckCircle2, User, Copy, Check, QrCode, Home } from "lucide-react"
 
 type GiftItem = {
   id: string
@@ -181,6 +181,11 @@ export default function Home() {
         >
           Nosso Chá de Casa Nova
         </h1>
+        <div className="flex items-center justify-center gap-3 mb-6 text-2xl md:text-3xl font-medium text-stone-700 dark:text-stone-300">
+           <span>Biel</span>
+           <Home className="w-6 h-6 text-[var(--primary)]" />
+           <span>Tatá</span>
+        </div>
         <div className="w-16 h-[1px] bg-[var(--primary)] mx-auto mb-6 opacity-40"></div>
         <p className="text-lg md:text-xl text-stone-600 dark:text-stone-300 leading-relaxed font-light">
           Estamos preparando nosso novo cantinho com todo o amor do mundo e a sua presença, 
