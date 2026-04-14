@@ -14,6 +14,7 @@ type GiftItem = {
   buyer_message?: string
   buyer_name?: string
   is_pix?: boolean
+  notes?: string
 }
 
 export default function Home() {
@@ -226,6 +227,7 @@ export default function Home() {
                 {/* Content */}
                 <div className="p-6 flex flex-col flex-grow">
                   <h3 className="font-semibold text-xl mb-2 line-clamp-2" title={gift.title}>{gift.title}</h3>
+                  {gift.notes && <p className="text-sm text-stone-500 dark:text-stone-400 mb-2">{gift.notes}</p>}
                   <p className="text-2xl font-bold text-[var(--primary)] mb-2">
                     {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(gift.price)}
                   </p>

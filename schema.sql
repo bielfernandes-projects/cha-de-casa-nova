@@ -7,6 +7,7 @@ create table if not exists public.gifts (
   purchase_url text not null,
   status text default 'available' check (status in ('available', 'purchased')),
   buyer_message text,
+  notes text,
   created_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
 

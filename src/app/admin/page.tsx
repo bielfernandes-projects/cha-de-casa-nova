@@ -12,6 +12,7 @@ type GiftItem = {
   purchase_url: string
   status: 'available' | 'purchased'
   is_pix: boolean
+  notes?: string
 }
 
 export default function AdminPage() {
@@ -29,6 +30,7 @@ export default function AdminPage() {
   const [file, setFile] = useState<File | null>(null)
   const [existingImageUrl, setExistingImageUrl] = useState("")
   const [isPix, setIsPix] = useState(false)
+  const [notes, setNotes] = useState("")
   
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState<{ text: string, type: 'success' | 'error' } | null>(null)
@@ -78,6 +80,7 @@ export default function AdminPage() {
     setPrice(gift.price.toString())
     setPurchaseUrl(gift.purchase_url)
     setIsPix(gift.is_pix || false)
+    setNotes(gift.notes || "")
     setExistingImageUrl(gift.image_url)
     setFile(null)
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -90,6 +93,7 @@ export default function AdminPage() {
     setPurchaseUrl("")
     setIsPix(false)
     setExistingImageUrl("")
+    setNotes("")
     setFile(null)
     setMessage(null)
   }
@@ -148,7 +152,8 @@ export default function AdminPage() {
             price: parseFloat(price),
             image_url: finalImageUrl,
             purchase_url: purchaseUrl,
-            is_pix: isPix
+            is_pix: isPix,
+            notes: notes
           })
           .eq('id', editingId)
 
@@ -166,7 +171,8 @@ export default function AdminPage() {
             image_url: finalImageUrl,
             purchase_url: purchaseUrl,
             status: 'available',
-            is_pix: isPix
+            is_pix: isPix,
+            notes: notes
           })
 
         if (insertError) throw new Error(`Erro ao salvar no banco: ${insertError.message}`)
@@ -179,6 +185,7 @@ export default function AdminPage() {
         setPurchaseUrl("")
         setFile(null)
         setIsPix(false)
+        setNotes("")
       }
 
       fetchGifts() // Reload list
@@ -310,6 +317,18 @@ export default function AdminPage() {
                 </div>
               </div>
 
+              {/* Notes */}
+              <div>
+                <label className="block text-sm font-medium mb-2 text-stone-700 dark:text-stone-300">Observação / Cores / Detalhes</label>
+                <input 
+                  type="text" 
+                  value={notes}
+                  onChange={(e) => setNotes(e.target.value)}
+                  className="w-full px-4 py-3 bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-shadow outline-none text-stone-900 dark:text-stone-100" 
+                  placeholder="Ex: Sugestão de cores: Branco ou Cinza"
+                />
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Price */}
                 <div>
@@ -415,6 +434,7 @@ export default function AdminPage() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="font-semibold text-stone-900 dark:text-white truncate">{gift.title}</h3>
+                        {gift.notes && <p className="text-[10px] text-stone-500 dark:text-stone-400 truncate mt-0.5">{gift.notes}</p>}
                         <p className="text-[var(--primary)] font-bold text-sm mt-1">
                           {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(gift.price)}
                         </p>
