@@ -241,7 +241,7 @@ export default function AdminPage() {
          </button>
       </div>
 
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8">
+      <div className="max-w-6xl mx-auto flex flex-col gap-8">
         
         {/* Formulário (Esquerda) */}
         <div className="flex-1">
