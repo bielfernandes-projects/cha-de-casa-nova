@@ -191,7 +191,7 @@ export default function Home() {
           Estamos preparando nosso novo cantinho com todo o amor do mundo e a sua presença, 
           mesmo que de longe, torna tudo mais especial. Criamos esta lista para os amigos e familiares 
           que quiserem nos presentear enquanto montamos o nosso lar. <br/><br/>
-          Sinta-se à vontade para escolher um mimo e, por favor, deixe uma mensagem para nós! 🤍
+          Sinta-se à vontade para escolher um mimo e pede o envio pra sua casa, assim é mais fácil de marcar sua visita na nossa casinha hehe, e por favor, deixa uma mensagem maneira pra gente! 🤍
         </p>
       </header>
 
