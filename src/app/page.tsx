@@ -43,6 +43,7 @@ export default function Home() {
       const { data, error } = await supabase
         .from('gifts')
         .select('*')
+        .order('status', { ascending: true })
         .order('created_at', { ascending: false })
       
       if (error) throw error
